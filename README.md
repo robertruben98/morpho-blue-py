@@ -1,5 +1,10 @@
 # morpho-blue-py
 
+[![CI](https://github.com/robertruben98/morpho-blue-py/actions/workflows/ci.yml/badge.svg)](https://github.com/robertruben98/morpho-blue-py/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/morpho-blue-py.svg)](https://pypi.org/project/morpho-blue-py/)
+[![Python versions](https://img.shields.io/pypi/pyversions/morpho-blue-py.svg)](https://pypi.org/project/morpho-blue-py/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A typed Python client for the [Morpho Blue GraphQL API](https://docs.morpho.org/tools/offchain/api/get-started/) —
 lending markets, MetaMorpho vaults, and user positions analytics.
 
