@@ -19,16 +19,31 @@ pip install morpho-blue-py
 pip install "morpho-blue-py[pandas]"
 ```
 
-## Quickstart — list top markets by supply APY
+## Quickstart — list the largest markets and their supply APY
+
+`supply_apy` / `borrow_apy` are returned as **decimal fractions** (e.g. `0.0366`
+means 3.66%), so format them with `:.2%`. We list the biggest Ethereum markets
+by deposits and skip ones at 100% utilization — a fully-utilized market reports a
+distorted instantaneous rate that can read as thousands of percent.
 
 ```python
 from morpho_blue import MorphoClient
 
 with MorphoClient() as client:
-    for market in client.top_markets_by_supply_apy(chain_id=1, limit=5):
-        loan = market.loan_asset.symbol if market.loan_asset else "?"
-        apy = market.state.supply_apy if market.state else None
-        print(f"{loan:8} supply APY: {apy:.2%}" if apy is not None else loan)
+    markets = client.get_markets(
+        chain_id=1,
+        first=5,
+        order_by="supply_assets_usd",
+        where={"utilization_lte": 0.99},
+    )
+
+for market in markets:
+    loan = market.loan_asset.symbol if market.loan_asset else "?"
+    apy = market.state.supply_apy if market.state else None
+    print(f"{loan:8} supply APY: {apy:.2%}" if apy is not None else loan)
+# USDC     supply APY: 3.66%
+# USDT     supply APY: 3.16%
+# WETH     supply APY: 1.62%
 ```
 
 ## Markets

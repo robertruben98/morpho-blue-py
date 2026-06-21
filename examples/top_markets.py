@@ -1,4 +1,8 @@
-"""List the top Morpho Blue markets on Ethereum by supply APY.
+"""List the largest Morpho Blue markets on Ethereum and their supply APY.
+
+APY fields are decimal fractions (0.0366 == 3.66%). We sort by deposits
+(supply_assets_usd) and skip markets at 100% utilization, which report a
+distorted instantaneous rate that can read as thousands of percent.
 
 Run: python examples/top_markets.py
 """
@@ -10,7 +14,12 @@ from morpho_blue import MorphoClient
 
 def main() -> None:
     with MorphoClient() as client:
-        markets = client.top_markets_by_supply_apy(chain_id=1, limit=10)
+        markets = client.get_markets(
+            chain_id=1,
+            first=10,
+            order_by="supply_assets_usd",
+            where={"utilization_lte": 0.99},
+        )
 
     for market in markets:
         loan = market.loan_asset.symbol if market.loan_asset else "?"
