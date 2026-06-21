@@ -62,6 +62,16 @@ def build_market_variables(
     order_direction: str,
     where: Optional[dict[str, Any]],
 ) -> dict[str, Any]:
+    """Build the GraphQL variables for a ``markets`` query.
+
+    Merges ``chain_id`` into the ``where`` filters as ``chainId_in`` and maps a
+    friendly ``order_by`` key to its ``MarketOrderBy`` enum value (passing
+    through any value not in :data:`MARKET_ORDER_BY`).
+
+    Returns:
+        The ``{"first", "skip", "orderDirection", "where", "orderBy"?}`` variables
+        dict ready to send to the API.
+    """
     filters: dict[str, Any] = dict(where or {})
     if chain_id is not None:
         filters.setdefault("chainId_in", [chain_id])
@@ -85,6 +95,16 @@ def build_vault_variables(
     order_direction: str,
     where: Optional[dict[str, Any]],
 ) -> dict[str, Any]:
+    """Build the GraphQL variables for a ``vaults`` query.
+
+    Merges ``chain_id`` into the ``where`` filters as ``chainId_in`` and maps a
+    friendly ``order_by`` key to its ``VaultOrderBy`` enum value (passing through
+    any value not in :data:`VAULT_ORDER_BY`).
+
+    Returns:
+        The ``{"first", "skip", "orderDirection", "where", "orderBy"?}`` variables
+        dict ready to send to the API.
+    """
     filters: dict[str, Any] = dict(where or {})
     if chain_id is not None:
         filters.setdefault("chainId_in", [chain_id])
@@ -100,22 +120,47 @@ def build_vault_variables(
 
 
 def markets_from_data(data: dict[str, Any]) -> list[Market]:
+    """Parse the ``markets.items`` of a response into :class:`Market` objects.
+
+    Returns:
+        The parsed markets (an empty list when the page has no items).
+    """
     items = data["markets"]["items"] or []
     return [Market.model_validate(item) for item in items]
 
 
 def vaults_from_data(data: dict[str, Any]) -> list[Vault]:
+    """Parse the ``vaults.items`` of a response into :class:`Vault` objects.
+
+    Returns:
+        The parsed vaults (an empty list when the page has no items).
+    """
     items = data["vaults"]["items"] or []
     return [Vault.model_validate(item) for item in items]
 
 
 def market_from_data(data: dict[str, Any]) -> Market:
+    """Parse the ``marketById`` field of a response into a :class:`Market`.
+
+    Returns:
+        The parsed single market.
+    """
     return Market.model_validate(data["marketById"])
 
 
 def vault_from_data(data: dict[str, Any]) -> Vault:
+    """Parse the ``vaultByAddress`` field of a response into a :class:`Vault`.
+
+    Returns:
+        The parsed single vault.
+    """
     return Vault.model_validate(data["vaultByAddress"])
 
 
 def user_from_data(data: dict[str, Any]) -> User:
+    """Parse the ``userByAddress`` field of a response into a :class:`User`.
+
+    Returns:
+        The parsed user with their market and vault positions.
+    """
     return User.model_validate(data["userByAddress"])
