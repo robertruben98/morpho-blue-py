@@ -1,0 +1,87 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "morpho-blue-py"
+version = "0.1.0"
+description = "Typed Python client for the Morpho Blue GraphQL API (lending markets, vaults, and positions analytics)."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [{ name = "Robert Ruben" }]
+keywords = ["morpho", "morpho-blue", "defi", "lending", "graphql", "ethereum"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Typing :: Typed",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "httpx>=0.24",
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+pandas = ["pandas>=1.3"]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "respx>=0.20",
+    "mypy>=1.8",
+    "ruff>=0.4",
+    "pandas>=1.3",
+    "pandas-stubs",
+]
+
+[project.urls]
+Homepage = "https://github.com/robertruben98/morpho-blue-py"
+Repository = "https://github.com/robertruben98/morpho-blue-py"
+Documentation = "https://docs.morpho.org/tools/offchain/api/get-started/"
+Issues = "https://github.com/robertruben98/morpho-blue-py/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/morpho_blue"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "W", "C4", "SIM"]
+# UP007/UP045 ask for PEP 604 `X | None`, which is not evaluatable at runtime
+# under Python 3.9 inside pydantic models. Keep typing.Optional/Union instead.
+ignore = ["UP007", "UP045"]
+
+[tool.ruff.lint.per-file-ignores]
+# Fixtures embed real on-chain hashes/addresses that exceed the line limit.
+"tests/fixtures.py" = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+files = ["src", "tests"]
+
+[[tool.mypy.overrides]]
+module = ["pandas.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers -m 'not integration'"
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = [
+    "integration: hits the live Morpho Blue GraphQL endpoint (deselected by default)",
+]
