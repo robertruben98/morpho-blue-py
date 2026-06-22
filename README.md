@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/robertruben98/morpho-blue-py/actions/workflows/ci.yml/badge.svg)](https://github.com/robertruben98/morpho-blue-py/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/morpho-blue-py.svg)](https://pypi.org/project/morpho-blue-py/)
+[![Docs](https://img.shields.io/badge/docs-online-blue)](https://robertruben98.github.io/morpho-blue-py/)
 [![Python versions](https://img.shields.io/pypi/pyversions/morpho-blue-py.svg)](https://pypi.org/project/morpho-blue-py/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
