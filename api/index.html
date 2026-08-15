@@ -1,0 +1,5654 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Python client for the Morpho Blue GraphQL API — lending markets, vaults, positions. Sync + async, Pydantic v2.">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>API reference - morpho-blue-py</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="morpho-blue-py" class="md-header__button md-logo" aria-label="morpho-blue-py" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            morpho-blue-py
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/robertruben98/morpho-blue-py" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    robertruben98/morpho-blue-py
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="morpho-blue-py" class="md-nav__button md-logo" aria-label="morpho-blue-py" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    morpho-blue-py
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/robertruben98/morpho-blue-py" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    robertruben98/morpho-blue-py
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API reference
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#morpho_blue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        morpho_blue
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="morpho_blue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AsyncMorphoClient
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AsyncMorphoClient">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.aclose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aclose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.__aenter__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __aenter__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.__aexit__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __aexit__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.get_markets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_markets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.get_market" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_market
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.top_markets_by_supply_apy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        top_markets_by_supply_apy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.iter_markets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        iter_markets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.get_vaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_vaults
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.get_vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_vault
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.top_vaults_by_apy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        top_vaults_by_apy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.get_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_user
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MorphoClient
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MorphoClient">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.close" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        close
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.__enter__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __enter__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.__exit__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __exit__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.get_markets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_markets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.get_market" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_market
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.top_markets_by_supply_apy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        top_markets_by_supply_apy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.iter_markets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        iter_markets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.get_vaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_vaults
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.get_vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_vault
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.top_vaults_by_apy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        top_vaults_by_apy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.get_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_user
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.GraphQLError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GraphQLError
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GraphQLError">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.GraphQLError.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.HTTPError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTPError
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTPError">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.HTTPError.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MorphoError
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.Asset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Asset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.Chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.Market" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Market
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MarketPosition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MarketPosition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MarketPositionState" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MarketPositionState
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MarketState" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MarketState
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.PageInfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PageInfo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.User" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.Vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vault
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.VaultAllocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VaultAllocation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.VaultPosition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VaultPosition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.VaultPositionState" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VaultPositionState
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.VaultState" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VaultState
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#morpho_blue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        morpho_blue
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="morpho_blue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AsyncMorphoClient
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AsyncMorphoClient">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.aclose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aclose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.__aenter__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __aenter__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.__aexit__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __aexit__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.get_markets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_markets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.get_market" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_market
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.top_markets_by_supply_apy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        top_markets_by_supply_apy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.iter_markets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        iter_markets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.get_vaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_vaults
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.get_vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_vault
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.top_vaults_by_apy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        top_vaults_by_apy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.AsyncMorphoClient.get_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_user
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MorphoClient
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MorphoClient">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.close" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        close
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.__enter__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __enter__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.__exit__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __exit__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.get_markets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_markets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.get_market" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_market
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.top_markets_by_supply_apy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        top_markets_by_supply_apy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.iter_markets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        iter_markets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.get_vaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_vaults
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.get_vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_vault
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.top_vaults_by_apy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        top_vaults_by_apy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoClient.get_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_user
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.GraphQLError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GraphQLError
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GraphQLError">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.GraphQLError.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.HTTPError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTPError
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTPError">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.HTTPError.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MorphoError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MorphoError
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.Asset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Asset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.Chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.Market" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Market
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MarketPosition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MarketPosition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MarketPositionState" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MarketPositionState
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.MarketState" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MarketState
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.PageInfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PageInfo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.User" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.Vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vault
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.VaultAllocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VaultAllocation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.VaultPosition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VaultPosition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.VaultPositionState" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VaultPositionState
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morpho_blue.VaultState" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VaultState
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="api-reference">API reference</h1>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="morpho_blue" class="doc doc-heading">
+            <code>morpho_blue</code>
+
+
+</h2>
+
+    <div class="doc doc-contents first">
+
+        <p>morpho-blue-py: a typed Python client for the Morpho Blue GraphQL API.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="morpho_blue.AsyncMorphoClient" class="doc doc-heading">
+            <code>AsyncMorphoClient</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>An asyncio client for the Morpho Blue GraphQL API.</p>
+<p>The async counterpart of :class:<code>~morpho_blue.client.MorphoClient</code>, exposing
+the same methods as coroutines. Use it as an async context manager so the
+underlying <code>httpx.AsyncClient</code> is closed automatically.</p>
+<p>Example::</p>
+<div class="highlight"><pre><span></span><code>import asyncio
+from morpho_blue import AsyncMorphoClient
+
+async def main() -&gt; None:
+    async with AsyncMorphoClient() as client:
+        markets = await client.top_markets_by_supply_apy(chain_id=1, limit=5)
+        for m in markets:
+            if m.loan_asset and m.state:
+                print(m.loan_asset.symbol, m.state.supply_apy)
+
+asyncio.run(main())
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.AsyncMorphoClient.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">endpoint</span><span class="o">=</span><span class="n">DEFAULT_ENDPOINT</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">DEFAULT_TIMEOUT</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Create an async client.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>endpoint</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>GraphQL endpoint URL. Defaults to the public Morpho Blue
+API (:data:<code>~morpho_blue.DEFAULT_ENDPOINT</code>).</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="morpho_blue._common.DEFAULT_ENDPOINT">DEFAULT_ENDPOINT</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>timeout</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Per-request timeout in seconds. Ignored if <code>client</code> is
+supplied.</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="morpho_blue.client.DEFAULT_TIMEOUT">DEFAULT_TIMEOUT</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>headers</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>[<span title="str">str</span>, <span title="str">str</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra HTTP headers merged into every request (on top of the
+default <code>Content-Type: application/json</code>).</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>client</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="httpx.AsyncClient">AsyncClient</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A pre-configured <code>httpx.AsyncClient</code> to use. When provided,
+the caller owns its lifecycle and :meth:<code>aclose</code> will not close
+it; otherwise the client creates and owns one.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.AsyncMorphoClient.aclose" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">aclose</span><span class="p">()</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Close the underlying HTTP client if this instance owns it.</p>
+<p>A no-op when an external <code>httpx.AsyncClient</code> was passed to
+:meth:<code>__init__</code>, since the caller is responsible for closing it.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.AsyncMorphoClient.__aenter__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__aenter__</span><span class="p">()</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Enter the async context manager and return this client.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.AsyncMorphoClient.__aexit__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__aexit__</span><span class="p">(</span><span class="n">exc_type</span><span class="p">,</span> <span class="n">exc</span><span class="p">,</span> <span class="n">tb</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Exit the async context manager, closing the client via :meth:<code>aclose</code>.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.AsyncMorphoClient.execute" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>POST a raw GraphQL query and return its <code>data</code> object.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>query</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The GraphQL query document.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>variables</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Optional variables to bind into the query.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The <code>data</code> object from the GraphQL response.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="HTTPError (morpho_blue.exceptions.HTTPError)" href="#morpho_blue.HTTPError">HTTPError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the endpoint returns a non-2xx HTTP status.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GraphQLError (morpho_blue.exceptions.GraphQLError)" href="#morpho_blue.GraphQLError">GraphQLError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the response carries a GraphQL <code>errors</code> array
+(the API returns HTTP 200 even for query errors).</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.AsyncMorphoClient.get_markets" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_markets</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">first</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order_direction</span><span class="o">=</span><span class="s1">&#39;Desc&#39;</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetch a single page of markets, optionally filtered and sorted.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>chain_id</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Restrict to one chain (e.g. <code>1</code> for Ethereum). When set,
+it is merged into <code>where</code> as <code>chainId_in</code>. Omit for all chains.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>first</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Page size (max number of markets to return).</p>
+              </div>
+            </td>
+            <td>
+                  <code>100</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>skip</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Offset for pagination.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>order_by</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sort field. Accepts a friendly key (<code>"supply_apy"</code>,
+<code>"supply_assets_usd"</code>, <code>"utilization"</code>, <code>"lltv"</code>, …) or a
+raw <code>MarketOrderBy</code> enum value.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>order_direction</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>"Desc"</code> (default) or <code>"Asc"</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;Desc&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>where</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional raw <code>MarketFilters</code> (e.g.
+<code>{"utilization_lte": 0.99}</code>), merged with <code>chain_id</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="Market (morpho_blue.models.Market)" href="#morpho_blue.Market">Market</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The page of markets as :class:<code>~morpho_blue.models.Market</code> objects.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="HTTPError (morpho_blue.exceptions.HTTPError)" href="#morpho_blue.HTTPError">HTTPError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>On a non-2xx HTTP status.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GraphQLError (morpho_blue.exceptions.GraphQLError)" href="#morpho_blue.GraphQLError">GraphQLError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the API returns a GraphQL error.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.AsyncMorphoClient.get_market" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_market</span><span class="p">(</span><span class="n">market_id</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">chain_id</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetch a single market by its <code>marketId</code> (the unique key).</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>market_id</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The market's unique key (0x-prefixed 32-byte hash). Note
+the Morpho schema uses <code>marketId</code>, not <code>uniqueKey</code>.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>chain_id</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The chain the market lives on (required for this lookup).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>The</code></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="Market (morpho_blue.models.Market)" href="#morpho_blue.Market">Market</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>class:<code>~morpho_blue.models.Market</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="HTTPError (morpho_blue.exceptions.HTTPError)" href="#morpho_blue.HTTPError">HTTPError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>On a non-2xx HTTP status.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GraphQLError (morpho_blue.exceptions.GraphQLError)" href="#morpho_blue.GraphQLError">GraphQLError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the market is not found or the API errors.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.AsyncMorphoClient.top_markets_by_supply_apy" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">top_markets_by_supply_apy</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Return the <code>limit</code> markets with the highest supply APY.</p>
+<p>Sorts by raw supply APY descending, which can surface tiny, fully
+utilized markets whose instantaneous rate spikes; pass
+<code>where={"utilization_lte": 0.99}</code> to exclude them.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>chain_id</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Restrict to one chain, or omit for all chains.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>limit</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>How many markets to return.</p>
+              </div>
+            </td>
+            <td>
+                  <code>10</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>where</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional raw <code>MarketFilters</code> to apply.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="Market (morpho_blue.models.Market)" href="#morpho_blue.Market">Market</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Up to <code>limit</code> markets ordered by descending supply APY.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="HTTPError (morpho_blue.exceptions.HTTPError)" href="#morpho_blue.HTTPError">HTTPError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>On a non-2xx HTTP status.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GraphQLError (morpho_blue.exceptions.GraphQLError)" href="#morpho_blue.GraphQLError">GraphQLError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the API returns a GraphQL error.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.AsyncMorphoClient.iter_markets" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">iter_markets</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">page_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order_direction</span><span class="o">=</span><span class="s1">&#39;Desc&#39;</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetch <em>all</em> matching markets, paginating automatically via <code>skip</code>.</p>
+<p>Repeatedly requests pages of <code>page_size</code> until a short page signals the
+end, accumulating every market into one list.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>chain_id</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Restrict to one chain, or omit for all chains.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>page_size</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Number of markets requested per underlying page.</p>
+              </div>
+            </td>
+            <td>
+                  <code>100</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>order_by</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sort field (see :meth:<code>get_markets</code>).</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>order_direction</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>"Desc"</code> (default) or <code>"Asc"</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;Desc&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>where</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional raw <code>MarketFilters</code> to apply.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="Market (morpho_blue.models.Market)" href="#morpho_blue.Market">Market</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Every matching market across all pages.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="HTTPError (morpho_blue.exceptions.HTTPError)" href="#morpho_blue.HTTPError">HTTPError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>On a non-2xx HTTP status.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GraphQLError (morpho_blue.exceptions.GraphQLError)" href="#morpho_blue.GraphQLError">GraphQLError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the API returns a GraphQL error.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.AsyncMorphoClient.get_vaults" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_vaults</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">first</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order_direction</span><span class="o">=</span><span class="s1">&#39;Desc&#39;</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetch a single page of MetaMorpho vaults, optionally filtered/sorted.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>chain_id</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Restrict to one chain, or omit for all chains.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>first</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Page size (max number of vaults to return).</p>
+              </div>
+            </td>
+            <td>
+                  <code>100</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>skip</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Offset for pagination.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>order_by</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sort field. Accepts a friendly key (<code>"net_apy"</code>,
+<code>"total_assets_usd"</code>, <code>"apy"</code>, <code>"fee"</code>, …) or a raw
+<code>VaultOrderBy</code> enum value.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>order_direction</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>"Desc"</code> (default) or <code>"Asc"</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;Desc&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>where</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional raw <code>VaultFilters</code> to apply.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="Vault (morpho_blue.models.Vault)" href="#morpho_blue.Vault">Vault</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The page of vaults as :class:<code>~morpho_blue.models.Vault</code> objects.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="HTTPError (morpho_blue.exceptions.HTTPError)" href="#morpho_blue.HTTPError">HTTPError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>On a non-2xx HTTP status.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GraphQLError (morpho_blue.exceptions.GraphQLError)" href="#morpho_blue.GraphQLError">GraphQLError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the API returns a GraphQL error.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.AsyncMorphoClient.get_vault" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_vault</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">chain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetch a single vault by its contract <code>address</code>.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>address</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The vault contract address.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>chain_id</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The chain the vault lives on; recommended to disambiguate
+the same address across chains.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>The</code></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="Vault (morpho_blue.models.Vault)" href="#morpho_blue.Vault">Vault</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>class:<code>~morpho_blue.models.Vault</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="HTTPError (morpho_blue.exceptions.HTTPError)" href="#morpho_blue.HTTPError">HTTPError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>On a non-2xx HTTP status.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GraphQLError (morpho_blue.exceptions.GraphQLError)" href="#morpho_blue.GraphQLError">GraphQLError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the vault is not found or the API errors.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.AsyncMorphoClient.top_vaults_by_apy" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">top_vaults_by_apy</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Return the <code>limit</code> vaults with the highest net APY.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>chain_id</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Restrict to one chain, or omit for all chains.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>limit</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>How many vaults to return.</p>
+              </div>
+            </td>
+            <td>
+                  <code>10</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>where</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional raw <code>VaultFilters</code> to apply.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="Vault (morpho_blue.models.Vault)" href="#morpho_blue.Vault">Vault</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Up to <code>limit</code> vaults ordered by descending net APY.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="HTTPError (morpho_blue.exceptions.HTTPError)" href="#morpho_blue.HTTPError">HTTPError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>On a non-2xx HTTP status.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GraphQLError (morpho_blue.exceptions.GraphQLError)" href="#morpho_blue.GraphQLError">GraphQLError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the API returns a GraphQL error.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.AsyncMorphoClient.get_user" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_user</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">chain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetch a wallet's market and vault positions by <code>address</code>.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>address</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The wallet address to look up.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>chain_id</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The chain to read positions on; recommended.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>A</code></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="User (morpho_blue.models.User)" href="#morpho_blue.User">User</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>class:<code>~morpho_blue.models.User</code> with <code>market_positions</code> and</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+<td></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="User (morpho_blue.models.User)" href="#morpho_blue.User">User</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>vault_positions</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="HTTPError (morpho_blue.exceptions.HTTPError)" href="#morpho_blue.HTTPError">HTTPError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>On a non-2xx HTTP status.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GraphQLError (morpho_blue.exceptions.GraphQLError)" href="#morpho_blue.GraphQLError">GraphQLError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the API returns a GraphQL error.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="morpho_blue.MorphoClient" class="doc doc-heading">
+            <code>MorphoClient</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>A synchronous client for the Morpho Blue GraphQL API.</p>
+<p>Example::</p>
+<div class="highlight"><pre><span></span><code>with MorphoClient() as client:
+    markets = client.top_markets_by_supply_apy(chain_id=1, limit=5)
+    for m in markets:
+        print(m.loan_asset.symbol, m.state.supply_apy)
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.MorphoClient.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">endpoint</span><span class="o">=</span><span class="n">DEFAULT_ENDPOINT</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">DEFAULT_TIMEOUT</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Create a synchronous client.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>endpoint</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>GraphQL endpoint URL. Defaults to the public Morpho Blue
+API (:data:<code>~morpho_blue.DEFAULT_ENDPOINT</code>).</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="morpho_blue._common.DEFAULT_ENDPOINT">DEFAULT_ENDPOINT</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>timeout</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Per-request timeout in seconds. Ignored if <code>client</code> is
+supplied.</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="morpho_blue.client.DEFAULT_TIMEOUT">DEFAULT_TIMEOUT</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>headers</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>[<span title="str">str</span>, <span title="str">str</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra HTTP headers merged into every request (on top of the
+default <code>Content-Type: application/json</code>).</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>client</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="httpx.Client">Client</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A pre-configured <code>httpx.Client</code> to use. When provided, the
+caller owns its lifecycle and :meth:<code>close</code> will not close it;
+otherwise the client creates and owns one.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.MorphoClient.close" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">close</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Close the underlying HTTP client if this instance owns it.</p>
+<p>A no-op when an external <code>httpx.Client</code> was passed to :meth:<code>__init__</code>,
+since the caller is responsible for closing it.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.MorphoClient.__enter__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__enter__</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Enter the context manager and return this client.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.MorphoClient.__exit__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__exit__</span><span class="p">(</span><span class="n">exc_type</span><span class="p">,</span> <span class="n">exc</span><span class="p">,</span> <span class="n">tb</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Exit the context manager, closing the client via :meth:<code>close</code>.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.MorphoClient.execute" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>POST a raw GraphQL query and return its <code>data</code> object.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>query</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The GraphQL query document.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>variables</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Optional variables to bind into the query.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The <code>data</code> object from the GraphQL response.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="HTTPError (morpho_blue.exceptions.HTTPError)" href="#morpho_blue.HTTPError">HTTPError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the endpoint returns a non-2xx HTTP status.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GraphQLError (morpho_blue.exceptions.GraphQLError)" href="#morpho_blue.GraphQLError">GraphQLError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the response carries a GraphQL <code>errors</code> array
+(the API returns HTTP 200 even for query errors).</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.MorphoClient.get_markets" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_markets</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">first</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order_direction</span><span class="o">=</span><span class="s1">&#39;Desc&#39;</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetch a single page of markets, optionally filtered and sorted.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>chain_id</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Restrict to one chain (e.g. <code>1</code> for Ethereum). When set,
+it is merged into <code>where</code> as <code>chainId_in</code>. Omit for all chains.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>first</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Page size (max number of markets to return).</p>
+              </div>
+            </td>
+            <td>
+                  <code>100</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>skip</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Offset for pagination.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>order_by</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sort field. Accepts a friendly key (<code>"supply_apy"</code>,
+<code>"supply_assets_usd"</code>, <code>"utilization"</code>, <code>"lltv"</code>, …) or a
+raw <code>MarketOrderBy</code> enum value.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>order_direction</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>"Desc"</code> (default) or <code>"Asc"</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;Desc&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>where</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional raw <code>MarketFilters</code> (e.g.
+<code>{"utilization_lte": 0.99}</code>), merged with <code>chain_id</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="Market (morpho_blue.models.Market)" href="#morpho_blue.Market">Market</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The page of markets as :class:<code>~morpho_blue.models.Market</code> objects.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="HTTPError (morpho_blue.exceptions.HTTPError)" href="#morpho_blue.HTTPError">HTTPError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>On a non-2xx HTTP status.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GraphQLError (morpho_blue.exceptions.GraphQLError)" href="#morpho_blue.GraphQLError">GraphQLError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the API returns a GraphQL error.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+        <p>Example::</p>
+<div class="highlight"><pre><span></span><code>with MorphoClient() as client:
+    markets = client.get_markets(
+        chain_id=1, first=5, order_by=&quot;supply_assets_usd&quot;
+    )
+    for m in markets:
+        if m.loan_asset and m.state:
+            print(m.loan_asset.symbol, m.state.supply_apy)
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.MorphoClient.get_market" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_market</span><span class="p">(</span><span class="n">market_id</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">chain_id</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetch a single market by its <code>marketId</code> (the unique key).</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>market_id</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The market's unique key (0x-prefixed 32-byte hash). Note
+the Morpho schema uses <code>marketId</code>, not <code>uniqueKey</code>.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>chain_id</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The chain the market lives on (required for this lookup).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>The</code></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="Market (morpho_blue.models.Market)" href="#morpho_blue.Market">Market</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>class:<code>~morpho_blue.models.Market</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="HTTPError (morpho_blue.exceptions.HTTPError)" href="#morpho_blue.HTTPError">HTTPError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>On a non-2xx HTTP status.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GraphQLError (morpho_blue.exceptions.GraphQLError)" href="#morpho_blue.GraphQLError">GraphQLError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the market is not found or the API errors.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.MorphoClient.top_markets_by_supply_apy" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">top_markets_by_supply_apy</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Return the <code>limit</code> markets with the highest supply APY.</p>
+<p>Sorts by raw supply APY descending, which can surface tiny, fully
+utilized markets whose instantaneous rate spikes; pass
+<code>where={"utilization_lte": 0.99}</code> to exclude them.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>chain_id</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Restrict to one chain, or omit for all chains.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>limit</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>How many markets to return.</p>
+              </div>
+            </td>
+            <td>
+                  <code>10</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>where</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional raw <code>MarketFilters</code> to apply.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="Market (morpho_blue.models.Market)" href="#morpho_blue.Market">Market</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Up to <code>limit</code> markets ordered by descending supply APY.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="HTTPError (morpho_blue.exceptions.HTTPError)" href="#morpho_blue.HTTPError">HTTPError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>On a non-2xx HTTP status.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GraphQLError (morpho_blue.exceptions.GraphQLError)" href="#morpho_blue.GraphQLError">GraphQLError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the API returns a GraphQL error.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.MorphoClient.iter_markets" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">iter_markets</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">page_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order_direction</span><span class="o">=</span><span class="s1">&#39;Desc&#39;</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetch <em>all</em> matching markets, paginating automatically via <code>skip</code>.</p>
+<p>Repeatedly requests pages of <code>page_size</code> until a short page signals the
+end, accumulating every market into one list.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>chain_id</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Restrict to one chain, or omit for all chains.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>page_size</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Number of markets requested per underlying page.</p>
+              </div>
+            </td>
+            <td>
+                  <code>100</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>order_by</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sort field (see :meth:<code>get_markets</code>).</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>order_direction</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>"Desc"</code> (default) or <code>"Asc"</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;Desc&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>where</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional raw <code>MarketFilters</code> to apply.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="Market (morpho_blue.models.Market)" href="#morpho_blue.Market">Market</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Every matching market across all pages.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="HTTPError (morpho_blue.exceptions.HTTPError)" href="#morpho_blue.HTTPError">HTTPError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>On a non-2xx HTTP status.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GraphQLError (morpho_blue.exceptions.GraphQLError)" href="#morpho_blue.GraphQLError">GraphQLError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the API returns a GraphQL error.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.MorphoClient.get_vaults" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_vaults</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">first</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order_direction</span><span class="o">=</span><span class="s1">&#39;Desc&#39;</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetch a single page of MetaMorpho vaults, optionally filtered/sorted.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>chain_id</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Restrict to one chain, or omit for all chains.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>first</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Page size (max number of vaults to return).</p>
+              </div>
+            </td>
+            <td>
+                  <code>100</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>skip</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Offset for pagination.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>order_by</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sort field. Accepts a friendly key (<code>"net_apy"</code>,
+<code>"total_assets_usd"</code>, <code>"apy"</code>, <code>"fee"</code>, …) or a raw
+<code>VaultOrderBy</code> enum value.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>order_direction</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>"Desc"</code> (default) or <code>"Asc"</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;Desc&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>where</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional raw <code>VaultFilters</code> to apply.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="Vault (morpho_blue.models.Vault)" href="#morpho_blue.Vault">Vault</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The page of vaults as :class:<code>~morpho_blue.models.Vault</code> objects.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="HTTPError (morpho_blue.exceptions.HTTPError)" href="#morpho_blue.HTTPError">HTTPError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>On a non-2xx HTTP status.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GraphQLError (morpho_blue.exceptions.GraphQLError)" href="#morpho_blue.GraphQLError">GraphQLError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the API returns a GraphQL error.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.MorphoClient.get_vault" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_vault</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">chain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetch a single vault by its contract <code>address</code>.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>address</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The vault contract address.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>chain_id</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The chain the vault lives on; recommended to disambiguate
+the same address across chains.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>The</code></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="Vault (morpho_blue.models.Vault)" href="#morpho_blue.Vault">Vault</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>class:<code>~morpho_blue.models.Vault</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="HTTPError (morpho_blue.exceptions.HTTPError)" href="#morpho_blue.HTTPError">HTTPError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>On a non-2xx HTTP status.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GraphQLError (morpho_blue.exceptions.GraphQLError)" href="#morpho_blue.GraphQLError">GraphQLError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the vault is not found or the API errors.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.MorphoClient.top_vaults_by_apy" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">top_vaults_by_apy</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Return the <code>limit</code> vaults with the highest net APY.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>chain_id</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Restrict to one chain, or omit for all chains.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>limit</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>How many vaults to return.</p>
+              </div>
+            </td>
+            <td>
+                  <code>10</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>where</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional raw <code>VaultFilters</code> to apply.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="Vault (morpho_blue.models.Vault)" href="#morpho_blue.Vault">Vault</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Up to <code>limit</code> vaults ordered by descending net APY.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="HTTPError (morpho_blue.exceptions.HTTPError)" href="#morpho_blue.HTTPError">HTTPError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>On a non-2xx HTTP status.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GraphQLError (morpho_blue.exceptions.GraphQLError)" href="#morpho_blue.GraphQLError">GraphQLError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the API returns a GraphQL error.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.MorphoClient.get_user" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_user</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">chain_id</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Fetch a wallet's market and vault positions by <code>address</code>.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>address</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The wallet address to look up.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>chain_id</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The chain to read positions on; recommended.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>A</code></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="User (morpho_blue.models.User)" href="#morpho_blue.User">User</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>class:<code>~morpho_blue.models.User</code> with <code>market_positions</code> and</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+<td></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="User (morpho_blue.models.User)" href="#morpho_blue.User">User</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>vault_positions</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="HTTPError (morpho_blue.exceptions.HTTPError)" href="#morpho_blue.HTTPError">HTTPError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>On a non-2xx HTTP status.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="GraphQLError (morpho_blue.exceptions.GraphQLError)" href="#morpho_blue.GraphQLError">GraphQLError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the API returns a GraphQL error.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="morpho_blue.GraphQLError" class="doc doc-heading">
+            <code>GraphQLError</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="MorphoError (morpho_blue.exceptions.MorphoError)" href="#morpho_blue.MorphoError">MorphoError</a></code></p>
+
+
+
+        <p>Raised when the GraphQL endpoint returns an <code>errors</code> array.</p>
+<p>The endpoint responds with HTTP 200 even for query errors, so this is
+surfaced from the response body rather than the status code.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="morpho_blue.GraphQLError.errors">errors</span></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The raw list of GraphQL error objects from the response.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.GraphQLError.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Build the error from a GraphQL <code>errors</code> array.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>errors</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="typing.Any">Any</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The <code>errors</code> list from the GraphQL response. Each item's
+<code>message</code> (when present) is joined into the exception message.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="morpho_blue.HTTPError" class="doc doc-heading">
+            <code>HTTPError</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="MorphoError (morpho_blue.exceptions.MorphoError)" href="#morpho_blue.MorphoError">MorphoError</a></code></p>
+
+
+
+        <p>Raised for non-2xx HTTP responses from the endpoint.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="morpho_blue.HTTPError.status_code">status_code</span></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The HTTP status code returned by the endpoint.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="morpho_blue.HTTPError.body">body</span></code></td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The response body text, if any.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="morpho_blue.HTTPError.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">status_code</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Build the error from an HTTP status and optional body.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>status_code</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The non-2xx HTTP status code.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>body</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The response body text, included in the message when present.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="morpho_blue.MorphoError" class="doc doc-heading">
+            <code>MorphoError</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="Exception">Exception</span></code></p>
+
+
+
+        <p>Base class for all errors raised by this library.</p>
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="morpho_blue.Asset" class="doc doc-heading">
+            <code>Asset</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="morpho_blue.models._Model">_Model</span></code></p>
+
+
+
+        <p>An ERC-20 token used as a loan or collateral asset, or a vault's asset.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="morpho_blue.Chain" class="doc doc-heading">
+            <code>Chain</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="morpho_blue.models._Model">_Model</span></code></p>
+
+
+
+        <p>An EVM chain that Morpho Blue is deployed on (e.g. Ethereum, Base).</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="morpho_blue.Market" class="doc doc-heading">
+            <code>Market</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="morpho_blue.models._Model">_Model</span></code></p>
+
+
+
+        <p>A Morpho Blue lending market (one loan asset against one collateral asset).</p>
+<p>The unique key is :attr:<code>market_id</code> (the schema's <code>marketId</code>); there is no
+<code>uniqueKey</code> field. <code>collateral_asset</code> is <code>None</code> for idle markets.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="morpho_blue.MarketPosition" class="doc doc-heading">
+            <code>MarketPosition</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="morpho_blue.models._Model">_Model</span></code></p>
+
+
+
+        <p>A user's position in a single market, with its health factor and balances.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="morpho_blue.MarketPositionState" class="doc doc-heading">
+            <code>MarketPositionState</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="morpho_blue.models._Model">_Model</span></code></p>
+
+
+
+        <p>A user's balances within a single market position.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="morpho_blue.MarketState" class="doc doc-heading">
+            <code>MarketState</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="morpho_blue.models._Model">_Model</span></code></p>
+
+
+
+        <p>The current on-chain state and rates of a market.</p>
+<p>APY and <code>utilization</code> are decimal fractions; <code>*_usd</code> are dollars; raw
+asset amounts are in the loan asset's smallest unit.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="morpho_blue.PageInfo" class="doc doc-heading">
+            <code>PageInfo</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="morpho_blue.models._Model">_Model</span></code></p>
+
+
+
+        <p>Pagination metadata returned alongside a page of results.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="morpho_blue.User" class="doc doc-heading">
+            <code>User</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="morpho_blue.models._Model">_Model</span></code></p>
+
+
+
+        <p>A wallet's positions across Morpho markets and vaults on one chain.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="morpho_blue.Vault" class="doc doc-heading">
+            <code>Vault</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="morpho_blue.models._Model">_Model</span></code></p>
+
+
+
+        <p>A MetaMorpho vault that allocates a single asset across Morpho markets.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="morpho_blue.VaultAllocation" class="doc doc-heading">
+            <code>VaultAllocation</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="morpho_blue.models._Model">_Model</span></code></p>
+
+
+
+        <p>A MetaMorpho vault's allocation of deposits into a single market.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="morpho_blue.VaultPosition" class="doc doc-heading">
+            <code>VaultPosition</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="morpho_blue.models._Model">_Model</span></code></p>
+
+
+
+        <p>A user's position in a single MetaMorpho vault.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="morpho_blue.VaultPositionState" class="doc doc-heading">
+            <code>VaultPositionState</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="morpho_blue.models._Model">_Model</span></code></p>
+
+
+
+        <p>A user's balances within a single vault position.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="morpho_blue.VaultState" class="doc doc-heading">
+            <code>VaultState</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="morpho_blue.models._Model">_Model</span></code></p>
+
+
+
+        <p>The current state of a MetaMorpho vault: yield, size, fee, and allocations.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
